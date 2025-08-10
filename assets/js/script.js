@@ -149,6 +149,7 @@ function showResults() {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
         tooltip: { enabled: true },
@@ -157,6 +158,11 @@ function showResults() {
         y: {
           beginAtZero: true,
           precision: 0,
+        },
+        x: {
+          ticks: {
+            autoSkip: false,
+          },
         },
       },
     },
