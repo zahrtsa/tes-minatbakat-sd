@@ -1,0 +1,54 @@
+body {
+  font-family: 'Poppins', 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #fff9db 0%, #ffe4e1 50%, #e6e6fa 100%);
+  min-height: 100vh;
+}
+h1, h2, h3, h4, button {
+  font-family: 'Poppins', sans-serif;
+}
+p, span, label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+#question {
+  animation: fadeInUp 0.5s ease forwards;
+  min-height: 70px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#progress-bar {
+  height: 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #ec4899, #fbbf24, #10b981);
+  transition: width 0.5s ease;
+}
+#result-description > div {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+#result-description > div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}

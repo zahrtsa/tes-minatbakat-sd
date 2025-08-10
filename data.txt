@@ -1,0 +1,48 @@
+export const kategoriWarna = {
+  "Realistic": "bg-red-400",
+  "Investigative": "bg-blue-400",
+  "Artistic": "bg-amber-400",
+  "Social": "bg-emerald-400",
+  "Enterprising": "bg-violet-400",
+  "Conventional": "bg-pink-400"
+};
+
+export const kategoriPenjelasan = {
+  "Realistic": "Kamu suka bekerja dengan tangan, membuat sesuatu, atau bekerja di luar ruangan.",
+  "Investigative": "Kamu suka berpikir, menganalisis, dan memecahkan masalah, terutama di bidang sains dan matematika.",
+  "Artistic": "Kamu memiliki imajinasi dan suka mengekspresikan diri melalui seni, musik, atau tulisan.",
+  "Social": "Kamu suka menolong orang lain, mudah bergaul, dan suka bekerja dengan orang banyak.",
+  "Enterprising": "Kamu energik, suka memimpin orang lain, dan senang berkompetisi.",
+  "Conventional": "Kamu terorganisir, rapi, dan suka bekerja dengan data atau jadwal."
+};
+
+export const kategoriPekerjaan = {
+  "Realistic": ["Petugas pemadam kebakaran", "Koki", "Petani", "Penjaga kebun binatang", "Petugas polisi", "Montir"],
+  "Social": ["Perawat", "Guru", "Konselor", "Pelatih hewan", "Kepala sekolah", "Hakim"],
+  "Artistic": ["Reporter", "Fotografer", "Desainer mode", "Musisi", "Penulis", "Aktor/Aktris"],
+  "Enterprising": ["Pelatih", "Pengacara", "Penata rambut", "Pemilik bisnis", "Manajer hotel", "Pemandu wisata"],
+  "Investigative": ["Dokter", "Dokter hewan", "Apoteker", "Peneliti", "Astronom", "Detektif"],
+  "Conventional": ["Pilot", "Pegawai bank", "Perawat", "Pustakawan", "Satpam", "Sekretaris"]
+};
+
+
+export const pertanyaanData = [
+  { teks: "Apakah kamu suka bekerja atau bermain di luar ruangan?", kategori: "Realistic" },
+  { teks: "Apakah kamu suka membuat sesuatu?", kategori: "Realistic" },
+  { teks: "Apakah kamu mau belajar cara memperbaiki sepedamu?", kategori: "Realistic" },
+  { teks: "Apakah kamu suka merawat orang yang sakit?", kategori: "Social" },
+  { teks: "Apakah kamu suka bekerja dalam kelompok atau tim?", kategori: "Social" },
+  { teks: "Apakah kamu senang punya banyak teman di kelas?", kategori: "Social" },
+  { teks: "Apakah kamu suka menulis cerita atau puisi?", kategori: "Artistic" },
+  { teks: "Apakah kamu suka membuat permainan saat bermain dengan teman-teman?", kategori: "Artistic" },
+  { teks: "Apakah kamu suka pelajaran musik, teater, atau seni?", kategori: "Artistic" },
+  { teks: "Apakah kamu suka memimpin orang lain?", kategori: "Enterprising" },
+  { teks: "Apakah kamu suka berkompetisi di sekolah atau dalam olahraga?", kategori: "Enterprising" },
+  { teks: "Apakah kamu suka memilih permainan yang dimainkan teman-temanmu?", kategori: "Enterprising" },
+  { teks: "Apakah kamu suka pelajaran matematika dan IPA?", kategori: "Investigative" },
+  { teks: "Apakah kamu pandai menggunakan komputer?", kategori: "Investigative" },
+  { teks: "Apakah kamu suka bekerja sendirian untuk memecahkan masalah?", kategori: "Investigative" },
+  { teks: "Apakah kamu suka bersiap-siap untuk sekolah?", kategori: "Conventional" },
+  { teks: "Apakah kamu suka mencatat uang dan pengeluaranmu?", kategori: "Conventional" },
+  { teks: "Apakah kamu suka menjaga kamar atau mejamu tetap rapi?", kategori: "Conventional" },
+];

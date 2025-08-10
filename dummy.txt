@@ -1,0 +1,115 @@
+const questions = [
+    { text: "Apakah kamu suka bekerja atau bermain di luar ruangan?", type: "R" },
+    { text: "Apakah kamu suka membuat sesuatu?", type: "R" },
+    { text: "Apakah kamu mau belajar cara memperbaiki sepedamu?", type: "R" },
+    { text: "Apakah kamu pandai mencari tahu cara kerja suatu benda?", type: "R" },
+
+    { text: "Apakah kamu suka membantu teman-temanmu memecahkan masalah?", type: "S" },
+    { text: "Apakah kamu suka merawat orang yang sakit?", type: "S" },
+    { text: "Apakah kamu senang punya banyak teman di kelas?", type: "S" },
+    { text: "Apakah kamu suka bekerja dalam kelompok atau tim?", type: "S" },
+
+    { text: "Apakah kamu suka menulis cerita atau puisi?", type: "A" },
+    { text: "Apakah kamu bisa memainkan alat musik?", type: "A" },
+    { text: "Apakah kamu suka membuat permainan saat bermain dengan teman-teman?", type: "A" },
+    { text: "Apakah kamu suka pelajaran musik, teater, atau seni?", type: "A" },
+
+    { text: "Apakah kamu suka memimpin orang lain?", type: "E" },
+    { text: "Apakah kamu suka menyelesaikan proyek yang sudah kamu mulai?", type: "E" },
+    { text: "Apakah kamu suka berkompetisi di sekolah atau dalam olahraga?", type: "E" },
+    { text: "Apakah kamu suka memilih permainan yang dimainkan teman-temanmu?", type: "E" },
+
+    { text: "Apakah kamu suka pelajaran matematika dan IPA?", type: "I" },
+    { text: "Apakah kamu suka menciptakan benda-benda baru?", type: "I" },
+    { text: "Apakah kamu pandai menggunakan komputer?", type: "I" },
+    { text: "Apakah kamu suka bekerja sendirian untuk memecahkan masalah?", type: "I" },
+
+    { text: "Apakah kamu suka bersiap-siap untuk sekolah?", type: "C" },
+    { text: "Apakah kamu suka matematika atau komputer?", type: "C" },
+    { text: "Apakah kamu suka mencatat uang dan pengeluaranmu?", type: "C" },
+    { text: "Apakah kamu suka menjaga kamar atau mejamu tetap rapi?", type: "C" },
+];
+
+
+
+Maaf, gambar pertama yang Anda unggah adalah ilustrasi tanpa teks, jadi tidak ada yang perlu diterjemahkan.
+
+Berikut terjemahan untuk gambar kedua:
+
+**R = Realistis (praktis)**
+* Kamu suka membuat sesuatu
+* Kamu suka bekerja di luar ruangan
+* Kamu suka menggunakan alat untuk membantu memperbaiki sesuatu
+
+**Pekerjaan Realistis:**
+* Petugas pemadam kebakaran
+* Koki
+* Petani
+* Penjaga kebun binatang
+* Petugas polisi
+* Montir
+
+**S = Sosial (penolong)**
+* Kamu suka membantu teman-temanmu
+* Kamu mudah akrab dengan orang lain
+* Kamu suka bekerja dengan orang lain
+
+**Pekerjaan Sosial:**
+* Perawat
+* Guru
+* Konselor
+* Pelatih hewan
+* Kepala sekolah
+* Hakim
+
+**A = Artistik (kreatif/inovatif)**
+* Kamu suka menciptakan hal-hal baru
+* Kamu suka menggunakan imajinasimu
+* Kamu suka mengekspresikan diri
+
+**Pekerjaan Artistik:**
+* Reporter
+* Fotografer
+* Desainer mode
+* Musisi
+* Penulis
+* Aktor/Aktris
+
+**E = Enterprising (inovatif/imajinatif)**
+* Kamu suka memimpin orang lain
+* Kamu energik dan aktif
+* Kamu suka kompetisi
+
+**Pekerjaan Enterprising:**
+* Pelatih
+* Pengacara
+* Penata rambut
+* Pemilik bisnis
+* Manajer hotel
+* Pemandu wisata
+
+**I = Investigatif (pemikir/detektif)**
+* Kamu suka bekerja sendirian
+* Kamu senang menggunakan sains dan matematika
+* Kamu suka membantu memecahkan masalah
+
+**Pekerjaan Investigatif:**
+* Dokter
+* Dokter hewan
+* Apoteker
+* Peneliti
+* Astronom
+* Detektif
+
+**C = Konvensional (pengatur)**
+* Kamu terorganisir dan suka jadwal
+* Kamu suka menjaga barang-barangmu tetap rapi
+* Teman-temanmu bisa mengandalkanmu
+
+**Pekerjaan Konvensional:**
+* Pilot
+* Pegawai bank
+* Perawat
+* Pustakawan
+* Satpam
+* Sekretaris

@@ -1,0 +1,179 @@
+import { kategoriWarna, kategoriPenjelasan, kategoriPekerjaan } from '../../data/kategori.js';
+import { pertanyaanData } from '../../data/pertanyaan.js';
+
+let currentQuestionIndex = 0;
+let scores = {};
+let shuffledQuestions = [];
+
+const categories = ["Realistic", "Investigative", "Artistic", "Social", "Enterprising", "Conventional"];
+categories.forEach(cat => scores[cat] = 0);
+
+let myChart;
+
+let audio;
+let isSoundEnabled = true;
+
+const kategoriHexColor = {
+  "Realistic": "#dc2626",
+  "Investigative": "#1d4ed8",
+  "Artistic": "#d97706",
+  "Social": "#059669",
+  "Enterprising": "#7c3aed",
+  "Conventional": "#db2777"
+};
+
+function speakText(text) {
+  if (!isSoundEnabled) return;
+
+  if (audio) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'id-ID';
+  speechSynthesis.speak(utterance);
+  audio = utterance;
+}
+
+function startQuiz() {
+  shuffledQuestions = [...pertanyaanData].sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  categories.forEach(cat => scores[cat] = 0);
+
+  document.getElementById("start-screen").classList.add("hidden");
+  document.getElementById("result-screen").classList.add("hidden");
+  document.getElementById("quiz-screen").classList.remove("hidden");
+
+  showQuestion();
+  updateProgress();
+  speakText(shuffledQuestions[currentQuestionIndex].teks);
+}
+
+function showQuestion() {
+  const questionElement = document.getElementById("question");
+  // animasi fade in sudah di CSS, cukup ganti text langsung
+  questionElement.textContent = shuffledQuestions[currentQuestionIndex].teks;
+}
+
+function nextQuestion(answer) {
+  if (answer === "yes") {
+    const kategori = shuffledQuestions[currentQuestionIndex].kategori;
+    scores[kategori]++;
+  }
+
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex >= shuffledQuestions.length) {
+    showResults();
+  } else {
+    showQuestion();
+    updateProgress();
+    speakText(shuffledQuestions[currentQuestionIndex].teks);
+  }
+}
+
+function updateProgress() {
+  let progress = ((currentQuestionIndex) / shuffledQuestions.length) * 100;
+  const progressBar = document.getElementById("progress-bar");
+  progressBar.style.width = `${progress}%`;
+}
+
+function showResults() {
+  document.getElementById("quiz-screen").classList.add("hidden");
+  document.getElementById("result-screen").classList.remove("hidden");
+
+  if (audio) {
+    speechSynthesis.cancel();
+  }
+
+  // confetti celebrate!
+  confetti({
+    particleCount: 150,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+
+  const ctx = document.getElementById('resultChart').getContext('2d');
+  if (myChart) myChart.destroy();
+
+  myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: categories,
+      datasets: [{
+        label: 'Skor',
+        data: categories.map(cat => scores[cat]),
+        backgroundColor: categories.map(cat => kategoriHexColor[cat]),
+        borderRadius: 6,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        y: { beginAtZero: true, precision: 0 }
+      }
+    }
+  });
+
+  let maxScore = Math.max(...Object.values(scores));
+  let topCategories = Object.keys(scores).filter(cat => scores[cat] === maxScore);
+
+  document.getElementById("result-text").textContent =
+    `Minat bakat tertinggi kamu: ${topCategories.join(", ")}`;
+
+  tampilkanHasilKategori(scores);
+}
+
+function tampilkanHasilKategori(skorKategori) {
+  const maxScore = Math.max(...Object.values(skorKategori));
+  const kategoriTertinggi = Object.keys(skorKategori).filter(key => skorKategori[key] === maxScore);
+  const container = document.getElementById("result-description");
+  container.innerHTML = "";
+
+  kategoriTertinggi.forEach(kategori => {
+    const card = document.createElement("div");
+    const warnaCard = kategoriWarna[kategori] || "bg-gray-600";
+    card.className = `${warnaCard} shadow-md rounded-lg p-6 border border-gray-300 hover:shadow-lg transition text-white cursor-default`;
+
+    const pekerjaanList = kategoriPekerjaan[kategori] || [];
+    const badgeHTML = pekerjaanList.map(pekerjaan =>
+      `<span class="inline-block bg-white bg-opacity-20 text-white text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">${pekerjaan}</span>`
+    ).join('');
+
+    card.innerHTML = `
+      <h3 class="text-xl font-bold mb-2">${kategori}</h3>
+      <p class="mb-4">${kategoriPenjelasan[kategori] || "Deskripsi belum tersedia."}</p>
+      <h4 class="text-lg font-semibold mb-2">Rekomendasi Pekerjaan</h4>
+      <div class="flex flex-wrap">
+        ${badgeHTML}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("start-button").addEventListener("click", startQuiz);
+  document.getElementById("yes-button").addEventListener("click", () => nextQuestion('yes'));
+  document.getElementById("no-button").addEventListener("click", () => nextQuestion('no'));
+  document.getElementById("restart-button").addEventListener("click", startQuiz);
+
+  const toggleAudioBtn = document.getElementById("toggle-audio");
+  toggleAudioBtn.addEventListener("click", function () {
+    isSoundEnabled = !isSoundEnabled;
+    this.textContent = isSoundEnabled ? 'Aktif' : 'Nonaktif';
+    if (isSoundEnabled) {
+      this.classList.remove('bg-gray-400');
+      this.classList.add('bg-blue-600');
+    } else {
+      this.classList.remove('bg-blue-600');
+      this.classList.add('bg-gray-400');
+    }
+  });
+});
